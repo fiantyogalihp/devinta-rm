@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS patients (
 -- Insert default admin user (username: admin, password: admin123)
 -- Password hash for 'admin123' using bcrypt
 INSERT OR IGNORE INTO users (username, password_hash) 
-VALUES ('admin', '$2a$10$rKZvVxwvXxVxvXxvXxvXxeN5YqJ5YqJ5YqJ5YqJ5YqJ5YqJ5YqJ5Y');
+VALUES ('admin', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy');
 
 -- Create indexes for better search performance
 CREATE INDEX IF NOT EXISTS idx_patients_nama ON patients(nama);
