@@ -47,12 +47,6 @@
 
 			<button type="submit" class="btn-primary">Login</button>
 		</form>
-
-		<div class="info-box">
-			<p><strong>Default Login:</strong></p>
-			<p>Username: admin</p>
-			<p>Password: admin123</p>
-		</div>
 	</div>
 </div>
 
