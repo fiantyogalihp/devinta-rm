@@ -96,7 +96,11 @@
 											<button
 												type="submit"
 												class="btn-delete"
-												onclick="return confirm('Yakin ingin menghapus data pasien {patient.nama}?')"
+												on:click={(e) => {
+													if (!confirm(`Yakin ingin menghapus data pasien ${patient.nama}?`)) {
+														e.preventDefault();
+													}
+												}}
 											>
 												Hapus
 											</button>
