@@ -1,0 +1,15 @@
+{"id":"6845130a-e58f-478c-8d44-06d595de2224","ts":"2026-06-24T09:44:34.316Z","path":"/home/satoru/Documents/devinta-rm/DOCKER_PLAN.md","version":"1.0.0","taskID":"fb8c8797-4771-467f-a293-8eec7f04b7ab"}
+{"id":"1cd1f0fb-73c5-4576-bd89-b17af211a8a5","ts":"2026-06-24T09:45:24.646Z","path":"/home/satoru/Documents/devinta-rm/Dockerfile","version":"1.0.0","taskID":"fb8c8797-4771-467f-a293-8eec7f04b7ab"}
+{"id":"af49ee95-cc3b-4185-938a-565a0136fd22","ts":"2026-06-24T09:45:33.861Z","path":"/home/satoru/Documents/devinta-rm/docker-compose.yml","version":"1.0.0","taskID":"fb8c8797-4771-467f-a293-8eec7f04b7ab"}
+{"id":"487d2f90-bc61-4922-9080-95688999c557","ts":"2026-06-24T09:45:45.308Z","path":"/home/satoru/Documents/devinta-rm/.dockerignore","version":"1.0.0","taskID":"fb8c8797-4771-467f-a293-8eec7f04b7ab"}
+{"id":"6dad336d-d0ec-4161-8a73-0ad03fb3a9d6","ts":"2026-06-24T09:45:51.951Z","path":"/home/satoru/Documents/devinta-rm/config/database.php","version":"1.0.0","taskID":"fb8c8797-4771-467f-a293-8eec7f04b7ab"}
+{"id":"f9ef807a-5139-40c3-9043-837507c45ef9","ts":"2026-06-24T09:46:43.909Z","path":"/home/satoru/Documents/devinta-rm/DOCKER_SETUP.md","version":"1.0.0","taskID":"fb8c8797-4771-467f-a293-8eec7f04b7ab"}
+{"id":"dd24ec02-0da9-48f9-a95c-2ae4a9cfd724","ts":"2026-06-24T09:58:26.905Z","path":"/home/satoru/Documents/devinta-rm/database.sql","version":"1.0.0","taskID":"fb8c8797-4771-467f-a293-8eec7f04b7ab"}
+{"id":"9140f562-e875-4720-b480-67e22d527677","ts":"2026-06-24T10:02:34.630Z","path":"/home/satoru/Documents/devinta-rm/PAGINATION_PLAN.md","version":"1.0.0","taskID":"fb8c8797-4771-467f-a293-8eec7f04b7ab"}
+{"id":"5f053385-8c36-4045-89d1-f712a8d64f99","ts":"2026-06-24T10:04:37.231Z","path":"/home/satoru/Documents/devinta-rm/dashboard.php","version":"1.0.0","taskID":"fb8c8797-4771-467f-a293-8eec7f04b7ab"}
+{"id":"b6b2d0f2-44a6-425c-99ba-744b30e6c011","ts":"2026-06-24T10:04:51.508Z","path":"/home/satoru/Documents/devinta-rm/dashboard.php","version":"1.0.0","taskID":"fb8c8797-4771-467f-a293-8eec7f04b7ab"}
+{"id":"cb2e084a-761a-45ca-9a39-7da58475270c","ts":"2026-06-24T10:05:01.670Z","path":"/home/satoru/Documents/devinta-rm/dashboard.php","version":"1.0.0","taskID":"fb8c8797-4771-467f-a293-8eec7f04b7ab"}
+{"id":"e150d7f4-fedf-413b-8589-41be17f0dd90","ts":"2026-06-24T10:05:12.670Z","path":"/home/satoru/Documents/devinta-rm/dashboard.php","version":"1.0.0","taskID":"fb8c8797-4771-467f-a293-8eec7f04b7ab"}
+{"id":"81384271-8cbd-4a32-aa8e-891134a125b2","ts":"2026-06-24T10:05:30.820Z","path":"/home/satoru/Documents/devinta-rm/assets/css/style.css","version":"1.0.0","taskID":"fb8c8797-4771-467f-a293-8eec7f04b7ab"}
+{"id":"f24631e4-b794-4585-aa73-84303ed952a9","ts":"2026-06-24T10:09:08.574Z","path":"/home/satoru/Documents/devinta-rm/dashboard.php","version":"1.0.0","taskID":"fb8c8797-4771-467f-a293-8eec7f04b7ab"}
+{"id":"ff31499f-4fe9-4b49-872c-9f619da1cdde","ts":"2026-06-24T10:09:15.576Z","path":"/home/satoru/Documents/devinta-rm/dashboard.php","version":"1.0.0","taskID":"fb8c8797-4771-467f-a293-8eec7f04b7ab"}
