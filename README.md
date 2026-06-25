@@ -1,6 +1,6 @@
 # Hospital RM Search - Sistem Pencarian Rekam Medis Pasien
 
-Aplikasi web untuk sistem pencarian nomor rekam medis pasien rumah sakit yang dibangun dengan SvelteKit, TypeScript, dan Turso Cloud Database.
+Aplikasi web untuk sistem pencarian nomor rekam medis pasien rumah sakit yang dibangun dengan PHP murni, MySQL, dan HTML/CSS/JS.
 
 ## 🚀 Fitur Utama
 
@@ -15,95 +15,66 @@ Aplikasi web untuk sistem pencarian nomor rekam medis pasien rumah sakit yang di
 
 ## 📋 Teknologi
 
-- **Framework**: SvelteKit
-- **Language**: TypeScript
-- **Database**: Turso Cloud (SQLite)
-- **Deployment**: Vercel
-- **Adapter**: @sveltejs/adapter-vercel
+- **Backend**: PHP 7.4+ (murni, tanpa framework)
+- **Database**: MySQL/MariaDB
+- **Frontend**: HTML5, CSS3, JavaScript
+- **Server**: XAMPP/WAMP (untuk development lokal)
 
-## 🛠️ Setup Lokal
+## 🛠️ Setup Lokal dengan XAMPP/WAMP
 
-### 1. Clone Repository
+### 1. Install XAMPP/WAMP
 
-```bash
-git clone <repository-url>
-cd hospital-rm-search
-```
+Download dan install salah satu:
+- **XAMPP**: https://www.apachefriends.org/
+- **WAMP**: https://www.wampserver.com/
 
-### 2. Install Dependencies
+### 2. Copy Project ke htdocs
 
 ```bash
-npm install
+# Untuk XAMPP
+cp -r hospital-rm-search C:/xampp/htdocs/
+
+# Untuk WAMP
+cp -r hospital-rm-search C:/wamp64/www/
 ```
 
-### 3. Setup Database Turso
+### 3. Setup Database
 
-Buat database Turso:
+1. Buka phpMyAdmin: http://localhost/phpmyadmin
+2. Klik tab "SQL"
+3. Copy isi file `database.sql` dan paste ke SQL editor
+4. Klik "Go" untuk execute
 
+Atau via command line:
 ```bash
-# Install Turso CLI
-curl -sSfL https://get.tur.so/install.sh | bash
-
-# Login ke Turso
-turso auth login
-
-# Buat database baru
-turso db create hospital-rm-db
-
-# Dapatkan URL database
-turso db show hospital-rm-db --url
-
-# Buat auth token
-turso db tokens create hospital-rm-db
+mysql -u root -p < database.sql
 ```
 
-### 4. Import Schema Database
+### 4. Konfigurasi Database (Opsional)
 
-```bash
-# Connect ke database dan import schema
-turso db shell hospital-rm-db < schema.sql
+Edit file `config/database.php` jika perlu mengubah kredensial:
+
+```php
+define('DB_HOST', 'localhost');
+define('DB_USER', 'root');
+define('DB_PASS', ''); // Kosongkan untuk XAMPP default
+define('DB_NAME', 'hospital_rm');
 ```
 
-### 5. Setup Environment Variables
+### 5. Jalankan Aplikasi
 
-Buat file `.env` dari template:
-
-```bash
-cp .env.example .env
-```
-
-Edit file `.env` dan isi dengan kredensial Turso Anda:
-
-```env
-TURSO_DATABASE_URL=libsql://your-database-name.turso.io
-TURSO_AUTH_TOKEN=your-auth-token-here
-SESSION_SECRET=your-random-secret-key-here
-```
-
-**Generate SESSION_SECRET:**
-```bash
-node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
-```
-
-### 6. Jalankan Development Server
-
-```bash
-npm run dev
-```
-
-Aplikasi akan berjalan di `http://localhost:5173`
-
-### 7. Login Default
-
-- **Username**: `admin`
-- **Password**: `admin123`
+1. Start Apache dan MySQL di XAMPP/WAMP Control Panel
+2. Buka browser: http://localhost/hospital-rm-search
+3. Login dengan:
+   - **Username**: `admin`
+   - **Password**: `admin123`
 
 ## 📦 Struktur Database
 
 ### Tabel `users`
 - `id` - Primary key
 - `username` - Username unik
-- `password_hash` - Password terenkripsi
+- `password_hash` - Password terenkripsi (PHP password_hash)
 - `created_at` - Timestamp
 
 ### Tabel `patients`
@@ -118,59 +89,30 @@ Aplikasi akan berjalan di `http://localhost:5173`
 - `created_at` - Timestamp pembuatan
 - `updated_at` - Timestamp update terakhir
 
-## 🚀 Deployment ke Vercel
+## 📁 Struktur Folder
 
-### 1. Push ke Git Repository
-
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-git remote add origin <your-git-repo-url>
-git push -u origin main
 ```
-
-### 2. Deploy ke Vercel
-
-#### Via Vercel CLI:
-
-```bash
-# Install Vercel CLI
-npm i -g vercel
-
-# Login ke Vercel
-vercel login
-
-# Deploy
-vercel
+hospital-rm-search/
+├── config/
+│   ├── database.php       # Konfigurasi database
+│   └── session.php        # Session management
+├── assets/
+│   └── css/
+│       └── style.css      # Stylesheet utama
+├── index.php              # Redirect ke login
+├── login.php              # Halaman login
+├── dashboard.php          # Dashboard & pencarian
+├── patient_add.php        # Form tambah pasien
+├── patient_edit.php       # Form edit pasien
+├── logout.php             # Logout handler
+├── database.sql           # Database schema
+└── README.md              # Dokumentasi
 ```
-
-#### Via Vercel Dashboard:
-
-1. Buka [vercel.com](https://vercel.com)
-2. Klik "Add New Project"
-3. Import repository Git Anda
-4. Vercel akan otomatis mendeteksi SvelteKit
-5. Tambahkan Environment Variables:
-   - `TURSO_DATABASE_URL`
-   - `TURSO_AUTH_TOKEN`
-   - `SESSION_SECRET`
-6. Klik "Deploy"
-
-### 3. Setup Environment Variables di Vercel
-
-Di Vercel Dashboard:
-1. Pilih project Anda
-2. Pergi ke Settings → Environment Variables
-3. Tambahkan variabel berikut:
-   - `TURSO_DATABASE_URL` = URL database Turso Anda
-   - `TURSO_AUTH_TOKEN` = Auth token Turso Anda
-   - `SESSION_SECRET` = Secret key untuk session
 
 ## 📝 Cara Penggunaan
 
 ### Login
-1. Buka aplikasi
+1. Buka http://localhost/hospital-rm-search
 2. Masukkan username dan password
 3. Klik "Login"
 
@@ -198,10 +140,11 @@ Di Vercel Dashboard:
 
 ## 🔐 Keamanan
 
-- Password disimpan dengan bcrypt hashing
-- Session menggunakan HTTP-only cookies
-- Protected routes dengan middleware
-- Input validation untuk mencegah data tidak valid
+- Password disimpan dengan PHP `password_hash()` (bcrypt)
+- Session-based authentication
+- Prepared statements untuk mencegah SQL injection
+- Input validation dan sanitization
+- Protected pages dengan session check
 
 ## 🎨 Responsive Design
 
@@ -210,29 +153,49 @@ Aplikasi dioptimalkan untuk:
 - 💻 Tablet (768px - 1024px)
 - 🖥️ Desktop (> 1024px)
 
-## 📄 File Penting
-
-- `schema.sql` - Schema database
-- `svelte.config.js` - Konfigurasi SvelteKit
-- `src/lib/db.ts` - Koneksi database
-- `src/lib/auth.ts` - Autentikasi
-- `src/lib/session.ts` - Session management
-- `src/hooks.server.ts` - Server hooks untuk proteksi route
-
 ## 🐛 Troubleshooting
 
-### Error: Cannot connect to database
-- Pastikan `TURSO_DATABASE_URL` dan `TURSO_AUTH_TOKEN` sudah benar
-- Cek koneksi internet
-- Verifikasi database Turso masih aktif
+### Error: "Connection failed"
+**Solusi**: 
+- Pastikan MySQL/MariaDB sudah running
+- Cek kredensial database di `config/database.php`
+- Pastikan database `hospital_rm` sudah dibuat
 
-### Error: UNIQUE constraint failed
-- Nomor rekam medis sudah digunakan
-- Gunakan nomor rekam medis yang berbeda
+### Error: "Table doesn't exist"
+**Solusi**:
+- Import file `database.sql` ke phpMyAdmin
+- Atau jalankan: `mysql -u root -p < database.sql`
 
 ### Login gagal
-- Pastikan menggunakan kredensial yang benar
+**Solusi**:
+- Pastikan tabel `users` sudah ada
+- Cek apakah user admin sudah ter-insert
 - Default: username `admin`, password `admin123`
+
+### Halaman blank/error 500
+**Solusi**:
+- Enable error reporting di php.ini
+- Cek Apache error log
+- Pastikan PHP version 7.4+
+
+## 🔄 Update Password Admin
+
+Untuk mengubah password admin:
+
+```php
+<?php
+// generate_password.php
+$password = 'password_baru_anda';
+$hash = password_hash($password, PASSWORD_DEFAULT);
+echo $hash;
+?>
+```
+
+Jalankan script di atas, copy hash-nya, lalu update di database:
+
+```sql
+UPDATE users SET password_hash = 'hash_dari_script' WHERE username = 'admin';
+```
 
 ## 📞 Support
 
@@ -241,3 +204,10 @@ Untuk pertanyaan atau masalah, silakan buat issue di repository ini.
 ## 📜 License
 
 MIT License - bebas digunakan untuk keperluan komersial maupun non-komersial.
+
+## 🎯 Default Login
+
+- **Username**: `admin`
+- **Password**: `admin123`
+
+**PENTING**: Segera ubah password default setelah instalasi pertama!

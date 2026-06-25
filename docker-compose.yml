@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: devinta-rm-web
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+    environment:
+      - DB_HOST=db
+      - DB_USER=root
+      - DB_PASS=secret123
+      - DB_NAME=hospital_rm
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - hospital-network
+
+  db:
+    image: mysql:8.0
+    container_name: devinta-rm-db
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret123
+      - MYSQL_DATABASE=hospital_rm
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./database.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-psecret123"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - hospital-network
+
+volumes:
+  mysql-data:
+    driver: local
+
+networks:
+  hospital-network:
+    driver: bridge
